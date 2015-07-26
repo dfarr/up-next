@@ -1,0 +1,33 @@
+{
+  "name": "up-next",
+  "version": "0.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dfarr/up-next.git"
+  },
+  "author": "David Farr <dfarr219@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dfarr/up-next/issues"
+  },
+  "homepage": "https://github.com/dfarr/up-next",
+  "dependencies": {
+    "body-parser": "^1.13.2",
+    "colors": "^1.1.2",
+    "cookie-parser": "^1.3.5",
+    "cookie-session": "^1.2.0",
+    "express": "^4.13.1",
+    "glob": "^5.0.14",
+    "http": "0.0.0",
+    "merge": "^1.2.0",
+    "passport": "^0.2.2",
+    "passport-spotify": "^0.3.0",
+    "path": "^0.11.14",
+    "socket.io": "^1.3.6"
+  }
+}
