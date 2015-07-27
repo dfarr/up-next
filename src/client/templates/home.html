@@ -1,0 +1,11 @@
+<div class="row">
+  <div class="col-sm-12">
+
+    <div class="list-group">
+      <a ng-repeat="play in playlist.value.items" ui-sref="play({id: play.id})" class="list-group-item">
+        {{ play.name }}
+      </a>
+    </div>
+
+  </div>
+</div>

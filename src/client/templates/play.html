@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col-sm-6">
+    <div class="list-group">
+      <a ng-repeat="track in playlist.value.tracks.items" 
+         ng-href="{{ track.track.uri }}" 
+         id="{{ track.track.id }}"
+         class="list-group-item">
+        <span class="badge">7</span>
+        {{ track.track.artists[0].name }} &mdash; {{ track.track.name }}
+      </a>
+    </div>
+  </div>
+
+  <div class="col-sm-6">
+    <h3 style="margin-top: 0;">Currently playing:</h3>
+    <h4>{{ play.track.artists[0].name }}</h4>
+    <h4>{{ play.track.name }}</h4>
+  </div>
+</div>

@@ -38,7 +38,7 @@ module.exports = {
         request.end();
 
         request.on('error', function(err) {
-            done(err);
+            done({status: 500, message: err});
         });
     }
 };
