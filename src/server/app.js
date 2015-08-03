@@ -8,7 +8,6 @@ var passport = require('passport');
 
 var app = express();
 
-app.use(require('body-parser').json());
 app.use(require('cookie-parser')());
 app.use(require('cookie-session')({
     secret: 'up-next',
@@ -23,6 +22,10 @@ app.use(passport.session());
 // Middleware
 //////////////////////////////////////////////////////////////////////////////////////////////
 
+app.use('/sms', require('body-parser').urlencoded());
+app.use('/sms', require('./middleware/param'));
+
+app.use('/api', require('body-parser').json());
 app.use('/api', require('./middleware/param'));
 app.use('/api', require('./middleware/authenticated'));
 
@@ -41,8 +44,7 @@ require('./passport');
 var scope = [
   'playlist-read-private', 
   'playlist-modify-public', 
-  'playlist-modify-private', 
-  'streaming'
+  'playlist-modify-private'
 ];
 
 app.get('/auth/spotify',
@@ -79,6 +81,23 @@ app.all('/api/:obj/:fun', function(req, res) {
         }
         res.send(obj);
     });
+});
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+// SMS
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+var client = require('twilio')(process.env.TWILIO_SID, process.env.TWILIO_TOKEN);
+
+app.all('/sms', function(req, res) {
+
+  client.sendMessage({
+    to: req.args.From,
+    from: '+18325324024',
+    body: 'Got it. ' + req.args.Body
+  });
+
+  res.end();
 });
 
 //////////////////////////////////////////////////////////////////////////////////////////////

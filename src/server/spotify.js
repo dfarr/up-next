@@ -2,14 +2,15 @@
 var https = require('https');
 
 module.exports = {
-    call: function(path, method, token, done) {
+    call: function(args, done) {
         var request = https.request({
             host: 'api.spotify.com',
-            path: path,
-            method: method,
+            path: args.path,
+            body: args.body,
+            method: args.method,
             headers: {
                 'Accept': 'application/json',
-                'Authorization': 'Bearer ' + token
+                'Authorization': 'Bearer ' + args.token
             }
         }, function(response) {
 
